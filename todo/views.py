@@ -20,13 +20,13 @@ def index(request):
 @csrf_exempt
 def create(request):
     if request.method == "POST":
-        Todo.objects.create(
-            content=request.POST["content"])
+        Todo.objects.create(content=request.POST["content"],)
         return redirect("/todo/")
     elif request.method =="GET":
         return render(request, 'todo/create.html')
     else:
         return HttpResponse("Invalid request method", setatus=405)
+   
     
 def read(request, todo_id):
     todo = Todo.objects.get(id=todo_id)

@@ -9,7 +9,7 @@
     {% if request.user.is_authenticated %}
     <div>{{ request.user.username }}</div>
     <form action="/user/logout/" method="post">
-        {% csrf_token %}
+           {% csrf_token %}
         <button>로그아웃</button>
     </form>
     {% else %}
@@ -23,14 +23,14 @@
     </a>
 
     <ul>
-        {% for todo in todos %}
-        <a href="/todo/{{ todo.id }}">
-            <li>
-                <div>{{ todo.content}}</div>
-            </li>
-        </a>
-
-        {% endfor %}
+    {% for todo in todos %}
+    <a href="/todo/{{ todo.id }}">
+        <li>
+            <div>{{ todo.content}}</div>
+        </li>
+    </a>
+        
+    {% endfor %}
     </ul>        
 </body>
 </html>

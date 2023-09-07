@@ -12,13 +12,13 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             auth_login(request, user)
-            return redirect('/')
+            return redirect('/todo/')
         else:
             return redirect('/longin/')
     elif request.method == "GET":
         user = request.user.is_authenticated
         if user:
-            return redirect('/')
+            return redirect('/todo/')
         else:
             return render(request, "user/login.html/")
         
