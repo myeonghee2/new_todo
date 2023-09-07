@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from user.models import User
 
 
@@ -48,3 +48,12 @@ def login(request):
         return render(request, "user/login.html")
     else:
         return HttpResponse("Invalid request method", setatus=405)
+    
+
+def logout(request):
+    if request.method == "POST":
+        auth_logout(request)
+        return redirect("/todo/")
+    else:
+        return HttpResponse("Invalid request method", setatus=405)
+    
